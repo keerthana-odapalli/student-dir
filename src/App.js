@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+
+const students = Array.from({ length: 16 }, (_, i) => ({
+  id: i + 1,
+  name: `Student ${i + 1}`,
+  roll: `ROLL${1000 + i}`,
+  email: `student${i + 1}@example.com`,
+}));
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Student Directory</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Roll No</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {students.map((student) => (
+            <tr key={student.id}>
+              <td>{student.id}</td>
+              <td>{student.name}</td>
+              <td>{student.roll}</td>
+              <td>{student.email}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
